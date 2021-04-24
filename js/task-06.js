@@ -21,8 +21,8 @@ console.log(elInput.value.length);
 
 elInput.addEventListener(blur, validation);
 function validation(event) {
-  if (elInput.value.length == elInput.dataset.length) {
-    elInput.style.borderColor = "#4caf50";
+  if (elInput.value.length === elInput.dataset.length) {
+    elInput.classList.add("valid");
   }
-  return (elInput.style.borderColor = "#f44336");
+  return elInput.classList.add("invalid");
 }
