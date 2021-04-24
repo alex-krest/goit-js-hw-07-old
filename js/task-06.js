@@ -15,14 +15,15 @@
 // }
 
 const elInput = document.querySelector("#validation-input");
-elInput.style.border = "3px solid #bdbdbd";
-console.log(elInput.dataset.length);
-console.log(elInput.value.length);
-
-elInput.addEventListener(blur, validation);
-function validation(event) {
-  if (elInput.value.length === elInput.dataset.length) {
+const limitLength = parseInt(elInput.dataset.length);
+elInput.addEventListener("blur", validation);
+function validation() {
+  let value = elInput.value.length;
+  if (value === limitLength) {
     elInput.classList.add("valid");
+    elInput.classList.remove("invalid");
+  } else {
+    elInput.classList.add("invalid");
+    elInput.classList.remove("valid");
   }
-  return elInput.classList.add("invalid");
 }
