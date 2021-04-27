@@ -5,21 +5,21 @@
 // Размеры самого первого div - 30px на 30px
 // Каждый следующий div после первого, должен быть шире и выше предыдущего на 10px
 // Создай функцию destroyBoxes(), которая очищает div#boxes.
-const controls = document.querySelector("#controls");
-// console.log(controls);
+const controlsEl = document.querySelector("#controls");
+console.log(controls);
 
-const input = controls.firstElementChild;
-console.log(input);
+const inputEl = document.querySelector("input");
+console.log(inputEl);
 
-const btnRender = document.querySelector("button[data-action='render']");
-console.log(btnRender);
+const renderBtn = document.querySelector("[data-action=render]");
+console.log(renderBtn);
 
-const btnDestroy = document.querySelector("button[data-action='destroy']");
-console.log(btnDestroy);
+const destroyBtn = document.querySelector("[data-action=destroy]");
+console.log(destroyBtn);
 
 const boxes = document.querySelector("#boxes");
 console.log(boxes);
-
+// -----
 const amount = input.value;
 console.log(amount);
 
@@ -30,7 +30,7 @@ function createBoxes(amount) {
 	const divWidth = divOne.style.width : 30 px;
 	const divHeigth = divOne.style.width : 30 px;
 	const divCollection = divOne * amount;
-	
+
 	boxes.insertAdjacentElement( "afterbegin", divCollection);
 };
 
@@ -39,3 +39,33 @@ function clean() {
 	input.textContent = '';
 	boxes.innerHTML = '';
 };
+// -----------------------------------------------
+// const inputEl(controlsEl) = document.querySelector("input");
+// const renderBtn = document.querySelector("[data-action=render]");
+// const destroyBtn = document.querySelector("[data-action=destroy]");
+const divEl(boxes) = document.querySelector("#boxes");
+inputEl.addEventListener(`input`, quontityElement);
+let amount = 0;
+function quontityElement(event) {
+  amount = event.currentTarget.value;
+}
+renderBtn.addEventListener(`click`, createBoxes);
+destroyBtn.addEventListener(`click`, destroyBoxes);
+function createBoxes(quontityElement) {
+  let change = 20;
+  for (let i = 0; i < amount; i++) {
+    const divBox = document.createElement(`div`);
+    change += 10;
+    divBox.style.width = `${change}px`;
+    divBox.style.height = `${change}px`;
+    divBox.style.backgroundColor = `${`rgb(1${change},${change},${change})`}`;
+    divEl.appendChild(divBox);
+  }
+}
+console.log(divEl);
+function destroyBoxes(quontityElement) {
+  for (let i = 0; i < amount; i++) {
+    const divDel = document.querySelector("#boxes div");
+    divDel.remove();
+  }
+}

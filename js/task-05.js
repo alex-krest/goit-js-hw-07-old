@@ -6,7 +6,8 @@ uncoInput.addEventListener("input", change);
 
 function change(event) {
   if (uncoInput.value === "") {
-    return (uncoSpan.textContent = "незнакомец");
+    uncoSpan.textContent = "незнакомец";
+    return;
   }
   uncoSpan.textContent = event.currentTarget.value;
 }

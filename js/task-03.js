@@ -22,16 +22,18 @@ const nodGallery = document.querySelector("#gallery");
 nodGallery.style.display = "flex";
 nodGallery.style.alignItems = "center";
 nodGallery.style.justifyContent = "space-between";
-console.log(nodGallery);
-// КАРТИНКИ РАЗНЫЕ ПО РАЗМЕРУ!!!
-const arrayImages = images.map((img) => {
-  const itemEl = document.createElement("li");
-  itemEl.style.listStyle = "none";
-  itemEl.insertAdjacentHTML(
-    "afterbegin",
-    `<img src='${img.url}' alt='${img.alt}' width='250px' >`
-  );
-  return itemEl;
-});
-nodGallery.append(...arrayImages);
-console.log(arrayImages);
+
+const templateEl = makeTemplate(images);
+nodGallery.insertAdjacentHTML("beforeend", templateEl);
+
+function makeTemplate(images) {
+  return images
+    .map(({ url, alt }) => {
+      return `
+  <li>
+    <img src="${url}" alt="${alt}" width="250px" />
+  </li>`;
+    })
+    .join("");
+}
+console.log(templateEl);
